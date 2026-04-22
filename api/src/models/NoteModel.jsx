@@ -4,7 +4,8 @@ import prisma from "../config/database";
 const NoteModel = {
     
     createNote : async (data) => {
-        return await prisma.note.create({data: data})
+
+        return await prisma.note.create(data)
     },
 
     listNotes : async () => {

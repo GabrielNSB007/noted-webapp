@@ -3,12 +3,17 @@ import prisma from "../config/database";
 
 const UserModel = {
     
-    createUser : async (data) => {
-        return await prisma.user.create({data: data})
+    createUser : async (id, username, email, password) => {
+        return await prisma.user.create(
+            {data: {
+                id: id,
+                username : username,
+                email: email,
+                password: password}})
     },
 
-    listUser : async () => {
-        return await prisma.user.findMany()
+    getUserByEmail : async (email) => {
+        return await prisma.user.findUnique({ where: {email : email}})
     },
 
     updateUser : async (id,data) => {
