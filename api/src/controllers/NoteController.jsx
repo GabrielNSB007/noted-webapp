@@ -20,7 +20,50 @@ const NoteController = {
             res.status(400).json(text("ERRO AO CRIAR NOTA"))
         }
  
+    },
+
+    listNotes: async (req,res) => {
+
+      try {
+
+            const result = await NoteService.listNotes()
+
+            res.status(201).json(result)
+
+        }catch(error) {
+            res.status(400).json(text("ERRO AO LISTAR NOTAS"))
+        }
+ 
+    },
+
+    update : async (req, res) => {
+
+        try {
+            
+            const noteId = Number(req.params.id)
+            const data = req.body
+
+            const result = await NoteService.updateNote(noteId, data)
+            res.status(201).json(result)
+        } catch(error){
+            res.status(400).json(text("ERRO AO ATUALIZAR NOTA"))
+        }
+    },
+
+    delete : async (req,res) => {
+
+        try {
+            const noteId = Number(req.params.id)
+
+            const result = await NoteService.deleteNote(noteId)
+
+            res.status(201).json(result)
+        }catch(error){
+            res.status(400).json(text("FALHA AO DELETAR NOTA"))
+        }
     }
         
 
 }
+
+export default NoteController
