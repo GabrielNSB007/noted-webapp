@@ -13,7 +13,7 @@ const NoteModel = {
     },
 
     updateNote : async (id,data) => {
-        return await prisma.update({
+        return await prisma.note.update({
             where: { id: id},
             data: data
         })

@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import NoteModel from "../models/NoteModel";
 
 const NoteService = {
@@ -11,19 +10,23 @@ const NoteService = {
     },
 
     listNotes: async () => {
-        const list = await NoteModel.listNotes
+        const list = await NoteModel.listNotes()
         
         return list
     },
 
     updateNote: async (id, data) => {
-        const noteToUpdate = await NoteModel.listNotes()
 
-        const noteUpdated = await NoteModel.updateNote(id, data)
+        const result = await NoteModel.updateNote(id, data)
+
+        return result
     },
 
     deleteNote: async (id) => {
-        await NoteModel.deleteNote(id)
+        
+        const result = await NoteModel.deleteNote(id)
+
+        return result
     }
     
 }

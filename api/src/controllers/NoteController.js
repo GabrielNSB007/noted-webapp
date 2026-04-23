@@ -17,7 +17,7 @@ const NoteController = {
             res.status(201).json(result)
 
         }catch(error) {
-            res.status(400).json(text("ERRO AO CRIAR NOTA"))
+            res.status(400).json(("ERRO AO CRIAR NOTA"))
         }
  
     },
@@ -28,10 +28,10 @@ const NoteController = {
 
             const result = await NoteService.listNotes()
 
-            res.status(201).json(result)
+            res.status(200).json(result)
 
         }catch(error) {
-            res.status(400).json(text("ERRO AO LISTAR NOTAS"))
+            res.status(400).json(("ERRO AO LISTAR NOTAS"))
         }
  
     },
@@ -46,7 +46,7 @@ const NoteController = {
             const result = await NoteService.updateNote(noteId, data)
             res.status(201).json(result)
         } catch(error){
-            res.status(400).json(text("ERRO AO ATUALIZAR NOTA"))
+            res.status(400).json(("ERRO AO ATUALIZAR NOTA"))
         }
     },
 
@@ -57,9 +57,9 @@ const NoteController = {
 
             const result = await NoteService.deleteNote(noteId)
 
-            res.status(201).json(result)
+            res.status(200).json(result)
         }catch(error){
-            res.status(400).json(text("FALHA AO DELETAR NOTA"))
+            res.status(400).json(("FALHA AO DELETAR NOTA"))
         }
     }
         
